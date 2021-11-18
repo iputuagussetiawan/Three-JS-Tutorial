@@ -27,7 +27,7 @@ const init = () => {
     const far = 1000;
 
     camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.set(0, 0, 25);
+    camera.position.set(0, 0, 50);
     camera.lookAt(scene.position);
     scene.add(camera);
 
@@ -37,12 +37,13 @@ const init = () => {
         alpha: true,
         canvas: model_container
     });
+    
     renderer.setSize(canvasSize.offsetWidth, canvasSize.offsetHeight);
     renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
     renderer.autoClear = false;
     renderer.setClearColor(0x000000, 0.0);
 
-    // orbitcontrol setup
+    //orbitcontrol setup
     const controls = new OrbitControls(camera, renderer.domElement);
 
     // ambient light setup
@@ -112,18 +113,37 @@ const render = () => {
 
 // animation recursive function
 let step = 0
+let currentTimeLine=window.pageYOffset / 3000;
+let aimTimeLine=window.pageYOffset / 3000;
 const animate = () => {
     requestAnimationFrame(animate);
-    step += 0.02;
-    house.position.y =  2*Math.abs(Math.sin(step));
+    //step += 0.02;
+    //house.position.y =  2*Math.abs(Math.sin(step));
     // console.log(2*Math.abs(Math.sin(step)))
-    house.rotation.y = Math.sin(step)*(Math.abs(Math.cos(step / 3) / 4));
+    //house.rotation.y = Math.sin(step)*(Math.abs(Math.cos(step / 3) / 4));
+
+    currentTimeLine +=(aimTimeLine-currentTimeLine) * 0.01;
+
+    //console.log(currentTimeLine)
+     const rx=currentTimeLine* -0.5+0.5;
+     const ry=(currentTimeLine * 0.9 + 0.1) * Math.PI*2;
+    //house.rotation.set(0,0,currentTimeLine);
+
+    house.rotation.z = ry;
+
+    //const rx=currentTimeLine* Math.abs(Math.sin(step));
+    //const ry=(currentTimeLine * 0.9 + 0.1) * Math.abs(Math.sin(step));
+    //house.rotation.z += 0.05;
+    // house.rotation.x = 0.01;
+	// house.rotation.y += 0.01;
+    //house.rotation.set(0.01,0.01,0)
+	//renderer.render( scene, camera );
 
     render();
-    stats.update();
+    //stats.update();
 }
 
-console.log(Math.sin(10));
+//console.log(Math.sin(10));
 
 // making responsive
 const windowResize = () => {
@@ -135,6 +155,11 @@ const windowResize = () => {
 
 window.addEventListener('resize', windowResize, false);
 window.onload = init;
+
+window.addEventListener("scroll",function(){
+    aimTimeLine=window.pageYOffset / 3000;
+})
+
 
 // const book=document.querySelector(".book");
 // const scene = new THREE.Scene();
