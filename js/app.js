@@ -35,15 +35,31 @@ scene.add( boxMesh );
 
 //box2
 let light1=new THREE.PointLight(0xffffff,1);
-light1.position.set(0,3,2);
+light1.position.set(1,-2,2);
 scene.add(light1);
+scene.add(new THREE.PointLightHelper(light1,0.2,0x00ff00));
 
 let light2=new THREE.PointLight(0xffffff,1);
-light2.position.set(0,-3,2);
+light2.position.set(2,2,2);
 scene.add(light2);
+scene.add(new THREE.PointLightHelper(light2,0.2,0x00ff00));
 
 var ambient=new THREE.AmbientLight(0xf22000);
 scene.add(ambient);
+
+var directionalLight=new THREE.DirectionalLight(0x00ff00,0.5);
+directionalLight.position.set(2,2,0);
+// directionalLight.target.position.set(4,2,0);
+// directionalLight.target.updateMatrixWorld();
+scene.add(directionalLight);
+scene.add(new THREE.DirectionalLightHelper(directionalLight));
+
+var spotLight=new THREE.SpotLight(0x0000ff,0.5,5);
+spotLight.position.set(2,2,0);
+spotLight.target.position.set(3,2,0);
+spotLight.target.updateMatrixWorld();
+scene.add(spotLight);
+scene.add(new THREE.SpotLightHelper(spotLight));
 
 const boxMat2 = new THREE.MeshLambertMaterial({ 
             map:grassTexture,
@@ -51,9 +67,12 @@ const boxMat2 = new THREE.MeshLambertMaterial({
             emissiveIntensity:0.2,
             emissiveMap:alphaTexture,
             } );
+
 const boxMesh2 = new THREE.Mesh( box, boxMat2 );
 boxMesh2.position.set(2,0,0);
 scene.add( boxMesh2 );
+
+
 
 //box3
 const boxMat3 = new THREE.MeshPhongMaterial({ 
