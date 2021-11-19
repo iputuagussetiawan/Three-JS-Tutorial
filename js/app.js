@@ -19,15 +19,16 @@ document.body.appendChild(stats.domElement);
 const init = () => {
     // scene setup
     scene = new THREE.Scene();
+    scene.add(new THREE.AxesHelper(5))
 
     //camera setup
-    const fov = 40;
+    const fov = 50;
     const aspect = canvasSize.offsetWidth / canvasSize.offsetHeight;
     const near = 0.1;
-    const far = 1000;
+    const far = 200;
 
     camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.set(0, 0, 50);
+    camera.position.set(0, 0, 15);
     camera.lookAt(scene.position);
     scene.add(camera);
 
@@ -95,11 +96,12 @@ const init = () => {
 
     // loding gltf 3d model
     const loader = new GLTFLoader();
-    loader.load('./assets/gltf/viking/scene.glb', (gltf) => {
+    loader.load('./assets/gltf/bottle/scene.glb', (gltf) => {
         house = gltf.scene.children[0];
-        house.scale.set(0.4, 0.4, 0.4)
-        house.position.set(0, -1.3, 0)
-        house.rotation.x = Math.PI / -3
+        house.scale.set(0.3, 0.3, 0.3)
+        //house.position.set(0, -1.3, 0)
+        house.position.set(-6.5, -7, 0)
+        //house.rotation.x = Math.PI / -3
         scene.add(gltf.scene);
     });
 
@@ -117,12 +119,15 @@ let step = 0
 let currentTimeLine=window.pageYOffset / 3000;
 let aimTimeLine=window.pageYOffset / 3000;
 const animate = () => {
+    renderer.render(scene,camera);
     requestAnimationFrame(animate);
     currentTimeLine +=(aimTimeLine-currentTimeLine) * 0.01;
     const rz=(currentTimeLine * 0.9 + 0.1) * Math.PI*2;
 
     if(house){
-        house.rotation.z = rz;
+       //house.rotation.z = currentTimeLine;
+        //house.rotation.x += 0.01;
+        //house.rotation.y += 0.01;
     }
     
     render();
