@@ -8,7 +8,9 @@ import Stats from 'three/examples/jsm/libs/stats.module.js';
 
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 100 );
+const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
+camera.position.z+=5;
+scene.background=new THREE.Color(0x0a0a0a);
 /**
  * 1.FOV How Hide Is UR Camera
  * 2.Aspect Ratio
@@ -18,7 +20,13 @@ const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.inner
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.setPixelRatio(devicePixelRatio);
 document.body.appendChild( renderer.domElement );
+
+var controls=new THREE.OrbitControls(camera,renderer.domElement);
+var grid=new THREE.GridHelper(100,100,0x0a0a0a,0x000000);
+grid.position.set(0,-0.5,0);
+scene.add(grid);
 
 const box = new THREE.BoxGeometry(1,1,1);
 const grassTexture=new THREE.TextureLoader().load('./assets/texture/grass.jpg');
