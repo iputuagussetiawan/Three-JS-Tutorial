@@ -16,29 +16,79 @@ const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.inner
  * 4. Far Clip : Seberapa Jauh Kamera Bisa Melihat
  */
 
- const renderer = new THREE.WebGLRenderer();
- renderer.setSize( window.innerWidth, window.innerHeight );
- document.body.appendChild( renderer.domElement );
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
 
- const box = new THREE.BoxGeometry(1,1,1);
- const boxMat = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
- const boxMesh = new THREE.Mesh( box, boxMat );
- scene.add( boxMesh );
+const box = new THREE.BoxGeometry(1,1,1);
+const grassTexture=new THREE.TextureLoader().load('./assets/texture/grass.jpg');
+const alphaTexture=new THREE.TextureLoader().load('./assets/texture/alphatexture.jpg');
+const brickTexture=new THREE.TextureLoader().load('./assets/texture/brick.jpg');
 
- camera.position.z = 5;
+//box1
+const boxMat = new THREE.MeshBasicMaterial({ 
+            map:grassTexture,
+            color: 0x00ff00
+            } );
+const boxMesh = new THREE.Mesh( box, boxMat );
+scene.add( boxMesh );
 
- const animate = function () {
+//box2
+let light1=new THREE.PointLight(0xffffff,1);
+light1.position.set(0,3,2);
+scene.add(light1);
+
+let light2=new THREE.PointLight(0xffffff,1);
+light2.position.set(0,-3,2);
+scene.add(light2);
+
+var ambient=new THREE.AmbientLight(0xf22000);
+scene.add(ambient);
+
+const boxMat2 = new THREE.MeshLambertMaterial({ 
+            map:grassTexture,
+            emissive: 0x00ff00,
+            emissiveIntensity:0.2,
+            emissiveMap:alphaTexture,
+            } );
+const boxMesh2 = new THREE.Mesh( box, boxMat2 );
+boxMesh2.position.set(2,0,0);
+scene.add( boxMesh2 );
+
+//box3
+const boxMat3 = new THREE.MeshPhongMaterial({ 
+    map:grassTexture,
+    shininess:100,
+    bumpMap:brickTexture,
+    bumpScale:0.01
+
+    } );
+const boxMesh3 = new THREE.Mesh( box, boxMat3 );
+boxMesh3.position.set(-2,0,0);
+scene.add( boxMesh3 );
+
+
+
+camera.position.z = 5;
+
+const animate = function () {
      requestAnimationFrame( animate );
      boxMesh.rotation.x += 0.01;
      boxMesh.rotation.y += 0.01;
+
+     boxMesh2.rotation.x += 0.01;
+     boxMesh2.rotation.y += 0.01;
+
+     boxMesh3.rotation.x += 0.01;
+     boxMesh3.rotation.y += 0.01;
      renderer.render( scene, camera );
- };
+};
 
- animate();
+animate();
 
- window.addEventListener('resize',function(){
-     renderer.setSize(this.window.innerWidth, this.window.innerHeight);
-     camera.aspect=this.window.innerWidth/ this.window.innerHeight;
-     camera.updateProjectionMatrix();
- })
+window.addEventListener('resize',function(){
+    renderer.setSize(this.window.innerWidth, this.window.innerHeight);
+    camera.aspect=this.window.innerWidth/ this.window.innerHeight;
+    camera.updateProjectionMatrix();
+})
 
