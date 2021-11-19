@@ -35,14 +35,33 @@ kendali.y=1;
 kendali.z=2;
 
 let gui=new GUI();
-// const blueLight = gui.addFolder('BlueLight');
-//     blueLight.add(spotLight1.position, "x", -30, 30, 1);
-//     blueLight.add(spotLight1.position, "y", -30, 30, 1);
-//     blueLight.add(spotLight1.position, "z", -30, 30, 1);
-
 gui.add(kendali,"x",-4,4,0.1);
 gui.add(kendali,"y",-4,4);
 gui.add(kendali,"z",-4,4);
+
+//Raycasting
+let rayCast=new THREE.Raycaster();
+let mouse={};
+let selected;
+let arrow=new THREE.ArrowHelper(rayCast.ray.direction,camera.position,10,0xff0000);
+scene.add(arrow);
+
+addEventListener("mousedown",(e)=>{
+    mouse.x=(e.clientX/window.innerWidth)*2-1;//normalization koordinat x mouse
+    mouse.y=(e.clientY/window.innerHeight)*-2+1;//normalization koordinat y mouse
+
+    arrow.setDirection(rayCast.ray.direction);
+    //console.log(mouse);
+
+    rayCast.setFromCamera(mouse,camera);
+    let items=rayCast.intersectObjects(scene.children);
+    items.forEach((i)=>{
+        if(i.object.name!=""){
+            //console.log(i.object.name);
+            selected=i.object;
+        }
+    })
+})
 
 let pLight=new THREE.PointLight(0xffffff,1);
 pLight.position.set(1,1,2);
@@ -53,13 +72,15 @@ let cGeo=new THREE.BoxGeometry(1,1,1);
 let cMat=new THREE.MeshLambertMaterial({color:0xff0000});
 let cMesh=new THREE.Mesh(cGeo,cMat);
 cMesh.position.set(2,0,0);
+cMesh.name="cube1";
 scene.add(cMesh);
 
 let cGeo2=new THREE.BoxGeometry(1,1,1);
 let cMat2=new THREE.MeshLambertMaterial({color:0xff0000});
 let cMesh2=new THREE.Mesh(cGeo2,cMat2);
 cMesh2.position.set(-2,0,0);
-cMesh2.matrixAutoUpdate=false;
+cMesh2.name="cube2";
+//cMesh2.matrixAutoUpdate=false;
 scene.add(cMesh2);
 
 let planeGeo=new THREE.PlaneGeometry(100,100);
@@ -71,27 +92,12 @@ scene.add(planeMesh);
 let angle=0;
 
 const animate = function () {
+    if(selected!=undefined){
+        selected.rotation.x +=0.01;
+    }
     requestAnimationFrame( animate );
-    cMesh2.rotation.y += kendali.x;
     pLight.position.set(kendali.x,kendali.y,kendali.z);
-
-   
-
-    angle+=0.01;
-    let rMetrix=new THREE.Matrix4().makeRotationX(angle);
-    let tMetrix=new THREE.Matrix4().makeTranslation(-2,1,0);
-    let result=new THREE.Matrix4().multiplyMatrices(tMetrix,rMetrix);
-
-    cMesh2.matrix.fromArray(result.toArray());
-    //cMesh2.scale.x += 0.01;
-    //  boxMesh.rotation.y += 0.01;
-
-    //  boxMesh2.rotation.x += 0.01;
-    //  boxMesh2.rotation.y += 0.01;
-
-    //  boxMesh3.rotation.x += 0.01;
-    //  boxMesh3.rotation.y += 0.01;
-     renderer.render( scene, camera );
+    renderer.render( scene, camera );
 };
 
 animate();
