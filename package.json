@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@babel/polyfill": "^7.11.5",
+    "gsap": "^3.8.0",
     "three": "^0.134.0"
   },
   "devDependencies": {
