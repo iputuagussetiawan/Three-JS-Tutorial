@@ -1,0 +1,35 @@
+* {
+	margin: 0;
+	padding: 0;
+	line-height: 1.2;
+}
+
+body {
+	color: #fff;
+	min-height: calc(3000px);
+	font-family: "Roboto", sans-serif;
+}
+
+canvas {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.banner {
+	padding-top: 50px;
+	padding-left: 50px;
+	width: 50%;
+
+	&__title {
+		margin-bottom: 24px;
+		font-size: 64px;
+		color: #ffba02;
+		letter-spacing: 1.5px;
+	}
+	&__description {
+		font-size: 24px;
+		letter-spacing: 1.5px;
+	}
+}
