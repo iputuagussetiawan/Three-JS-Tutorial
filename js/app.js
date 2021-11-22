@@ -75,7 +75,7 @@ let loader =new GLTFLoader().load('./assets/gltf/drone/drone.glb',function(resul
 const animate = function () {
     requestAnimationFrame( animate );
     //pLight.position.set(kendali.x,kendali.y,kendali.z);
-    drone.rotation.z += 0.01;
+    //drone.rotation.z += 0.01;
     // cMesh.rotation.y += 0.01;
     renderer.render( scene, camera );
 };
