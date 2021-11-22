@@ -29,7 +29,7 @@ const init = () => {
 
     camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
     camera.position.set(0, 0, 15);
-    camera.lookAt(scene.position);
+    //camera.lookAt(scene.position);
     scene.add(camera);
 
     //renderer setup
@@ -40,8 +40,8 @@ const init = () => {
     });
     
     renderer.setSize(canvasSize.offsetWidth, canvasSize.offsetHeight);
-    renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
-    renderer.autoClear = false;
+    // renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+    // renderer.autoClear = false;
     renderer.setClearColor(0x000000, 0.0);
 
     //orbitcontrol setup
@@ -96,12 +96,12 @@ const init = () => {
 
     // loding gltf 3d model
     const loader = new GLTFLoader();
-    loader.load('./assets/gltf/bottle/scene.glb', (gltf) => {
+    loader.load('./assets/gltf/viking/scene.glb', (gltf) => {
         house = gltf.scene.children[0];
         house.scale.set(0.3, 0.3, 0.3)
-        //house.position.set(0, -1.3, 0)
-        house.position.set(-6.5, -7, 0)
-        //house.rotation.x = Math.PI / -3
+        house.position.set(0, -1.3, 0)
+        ///house.position.set(-6.5, -7, 0)
+       
         scene.add(gltf.scene);
     });
 
@@ -119,13 +119,13 @@ let step = 0
 let currentTimeLine=window.pageYOffset / 3000;
 let aimTimeLine=window.pageYOffset / 3000;
 const animate = () => {
-    renderer.render(scene,camera);
+    //renderer.render(scene,camera);
     requestAnimationFrame(animate);
     currentTimeLine +=(aimTimeLine-currentTimeLine) * 0.01;
     const rz=(currentTimeLine * 0.9 + 0.1) * Math.PI*2;
 
     if(house){
-       //house.rotation.z = currentTimeLine;
+       house.rotation.z += 0.01;
         //house.rotation.x += 0.01;
         //house.rotation.y += 0.01;
     }
