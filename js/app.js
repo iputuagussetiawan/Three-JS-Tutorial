@@ -22,13 +22,13 @@ const init = () => {
     scene.add(new THREE.AxesHelper(5))
 
     //camera setup
-    const fov = 50;
+    const fov = 10;
     const aspect = canvasSize.offsetWidth / canvasSize.offsetHeight;
     const near = 0.1;
     const far = 200;
 
     camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.set(0, 0, 15);
+    camera.position.set(0, 15, 15);
     //camera.lookAt(scene.position);
     scene.add(camera);
 
@@ -48,25 +48,29 @@ const init = () => {
     const controls = new OrbitControls(camera, renderer.domElement);
 
     // ambient light setup
-    const amibientLight = new THREE.AmbientLight(0x404040, 2);
+    //const amibientLight = new THREE.AmbientLight(0x404040, 2);
+    const amibientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(amibientLight);
 
     // direction lights setup
-    const spotLight1 = new THREE.SpotLight(0x1d27f0, 5);
+    //const spotLight1 = new THREE.SpotLight(0x1d27f0, 5);
+    const spotLight1 = new THREE.SpotLight(0xffffff, 5);
     spotLight1.position.set(6, 11, 6);
     spotLight1.castShadow = true;
     const spotLightHelper1 = new THREE.SpotLightHelper(spotLight1, 1, 0x00ff00);
     scene.add(spotLight1);
 
     // orenge light setup
-    const spotLight2 = new THREE.SpotLight(0xf57d22, 2);
+    //const spotLight2 = new THREE.SpotLight(0xf57d22, 2);
+    const spotLight2 = new THREE.SpotLight(0xffffff, 2);
     spotLight2.position.set(-10, 0, 12);
     spotLight2.castShadow = true;
     const spotLightHelper2 = new THREE.SpotLightHelper(spotLight2, 2, 0x00ff00);
     scene.add(spotLight2);
 
     // back light setup
-    const spotLight3 = new THREE.SpotLight(0x1d27f0, 2);
+    //const spotLight3 = new THREE.SpotLight(0x1d27f0, 2);
+    const spotLight3 = new THREE.SpotLight(0xffffff, 2);
     spotLight3.position.set(-10, 18, -17);
     spotLight3.castShadow = true;
     const spotLightHelper3 = new THREE.SpotLightHelper(spotLight3, 2, 0xff0000);
@@ -96,10 +100,10 @@ const init = () => {
 
     // loding gltf 3d model
     const loader = new GLTFLoader();
-    loader.load('./assets/gltf/viking/scene.glb', (gltf) => {
+    loader.load('./assets/gltf/drone/drone.glb', (gltf) => {
         house = gltf.scene.children[0];
-        house.scale.set(0.3, 0.3, 0.3)
-        house.position.set(0, -1.3, 0)
+        house.scale.set(1, 1, 1)
+        house.position.set(0, 0, 0)
         ///house.position.set(-6.5, -7, 0)
        
         scene.add(gltf.scene);
