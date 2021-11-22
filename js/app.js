@@ -1,20 +1,33 @@
 import * as THREE from 'three';
+import gsap from 'gsap';
 import { Scene } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GUI } from 'three/examples/jsm/libs/dat.gui.module.js';
 import Stats from 'three/examples/jsm/libs/stats.module.js';
+import LocomotiveScroll from 'locomotive-scroll';
+
+const scroll = new LocomotiveScroll({
+    el: document.querySelector('[data-scroll-container]'),
+    smooth: true
+});
+
+const speed_scroll=500;
+var tl = gsap.timeline({defaults:{duration: 1}});
+
 
 let scene;
 let camera;
 let renderer;
-let house;
+let objectModel;
 let model_container = document.querySelector('.webgl');
 const canvasSize = document.querySelector('.canvas-element');
 
 const stats = new Stats()
 document.body.appendChild(stats.domElement);
+
+
 
 const init = () => {
     // scene setup
@@ -22,13 +35,14 @@ const init = () => {
     scene.add(new THREE.AxesHelper(5))
 
     //camera setup
-    const fov = 10;
+    const fov = 40;
     const aspect = canvasSize.offsetWidth / canvasSize.offsetHeight;
-    const near = 0.1;
-    const far = 200;
+    const near = 0.01;
+    const far = 100;
 
     camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.set(0, 15, 15);
+    camera.position.z=10;
+    camera.rotation.z=1;
     //camera.lookAt(scene.position);
     scene.add(camera);
 
@@ -101,15 +115,48 @@ const init = () => {
     // loding gltf 3d model
     const loader = new GLTFLoader();
     loader.load('./assets/gltf/drone/drone.glb', (gltf) => {
-        house = gltf.scene.children[0];
-        house.scale.set(1, 1, 1)
-        house.position.set(0, 0, 0)
+        objectModel = gltf.scene.children[0];
+        objectModel.scale.set(1, 1, 1)
+        objectModel.position.set(0, 0, 0)
         ///house.position.set(-6.5, -7, 0)
        
         scene.add(gltf.scene);
-    });
 
-    animate();
+
+        gsap.to(camera.position,{
+            z:4,
+            duration:1,
+            ease:"back.out(1.7)",
+        })
+        gsap.to(camera.rotation,{
+            z:0,
+            duration:1,
+        })
+
+        gsap.to(objectModel.rotation,{
+            x:-0.5,
+            duration:1,
+            delay:1
+        })
+        gsap.to(objectModel.rotation,{
+            z:Math.PI,
+            duration:2,
+            delay:1
+        })
+        gsap.fromTo(".main-content", 
+            {
+                opacity: 0,
+                y:-50
+            }, 
+            {
+                opacity: 1, 
+                y:0,
+                duration: 1,
+                delay:2
+            }
+        );
+    });
+    animate();   
 }
 
 
@@ -119,21 +166,16 @@ const render = () => {
 }
 
 // animation recursive function
-let step = 0
-let currentTimeLine=window.pageYOffset / 3000;
-let aimTimeLine=window.pageYOffset / 3000;
+let currentTimeLine=window.pageYOffset / 500;
+let aimTimeLine=window.pageYOffset / 500;
 const animate = () => {
     //renderer.render(scene,camera);
     requestAnimationFrame(animate);
-    currentTimeLine +=(aimTimeLine-currentTimeLine) * 0.01;
+    currentTimeLine +=(aimTimeLine-currentTimeLine) * 0.1;
     const rz=(currentTimeLine * 0.9 + 0.1) * Math.PI*2;
-
-    if(house){
-       house.rotation.z += 0.01;
-        //house.rotation.x += 0.01;
-        //house.rotation.y += 0.01;
+    if(objectModel){
+       objectModel.rotation.z = rz;
     }
-    
     render();
 }
 // making responsive
@@ -144,11 +186,21 @@ const windowResize = () => {
     render();
 }
 
-window.addEventListener('resize', windowResize, false);
-window.addEventListener("scroll",function(){
-    aimTimeLine=window.pageYOffset / 3000;
-})
+window.addEventListener('resize', windowResize, false)
+// scroll.on('scroll', (args) => {
+//     // Get all current elements : args.currentElements
+//     aimTimeLine=window.pageYOffset / 500;
+//     console.log(window.pageYOffset);
+// });
 
+scroll.on("scroll", (obj) => {
+    console.log(obj.scroll.y);
+    aimTimeLine=obj.scroll.y / 500;
+  });
+// window.addEventListener("scroll",function(){
+//     aimTimeLine=window.pageYOffset / 500;
+//     console.log(aimTimeLine);
+// })
 window.onload = init;
 
 
