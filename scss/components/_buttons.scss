@@ -1,0 +1,39 @@
+@use "../config" as *;
+.btn-wrapper {
+	margin-top: 42px;
+	@media only screen and (max-width: 767.98px) {
+		margin-top: 36px;
+	}
+}
+.btn-custom-primary {
+	display: inline-block;
+	padding: 16px 42px;
+	font-size: 16px;
+	line-height: 22px;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: $black;
+	border: 1px solid $black;
+	background: transparent;
+	transition: 0.4s ease;
+
+	&:hover {
+		background: $black-400;
+		color: $white;
+	}
+	&:hover &__icon {
+		transform: translateX(10px);
+	}
+
+	&__icon {
+		transition: 0.4s ease;
+		animation-delay: 2s;
+	}
+
+	@media only screen and (max-width: 991.98px) {
+		padding: 14px 24px;
+		font-size: 14px;
+	}
+}

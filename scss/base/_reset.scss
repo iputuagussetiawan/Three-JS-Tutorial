@@ -1,0 +1,64 @@
+@use "../config/variable" as *;
+/*-----------------------------------------
+////////////////// STR RESET //////////////
+-----------------------------------------*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
+
+// html {
+// 	scroll-behavior: smooth;
+// }
+a {
+	text-decoration: none;
+}
+
+body {
+	color: $black-300;
+	background-color: $white;
+	font-family: "Lato", sans-serif;
+
+	&.no-scroll {
+		overflow: hidden;
+	}
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	cursor: pointer;
+	background: $primary;
+}
+
+::-moz-selection {
+	background-color: $primary;
+	color: #ffffff;
+}
+
+::selection {
+	background-color: $primary;
+	color: #ffffff;
+}
+
+p {
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+a {
+	color: #333;
+	transition: 0.4s ease;
+	&:hover {
+		text-decoration: none;
+		color: $primary;
+	}
+}
+/*-----------------------------------------
+////////////////// END RESET //////////////
+-----------------------------------------*/

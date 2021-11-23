@@ -1,0 +1,36 @@
+.pagination {
+	.page-item {
+		.page-link {
+			margin: 0px 5px;
+			padding: 10px 16px;
+			background-color: #e6e6e6;
+			transition: 0.4s ease;
+
+			&:hover {
+				background-color: $black;
+				color: $white;
+			}
+		}
+
+		&.active .page-link {
+			background-color: $black;
+		}
+
+		&:first-child .page-link {
+			border-top-left-radius: 0px;
+			border-bottom-left-radius: 0px;
+		}
+		&:last-child .page-link {
+			border-top-right-radius: 0px;
+			border-bottom-right-radius: 0px;
+		}
+	}
+
+	@media only screen and (max-width: 767.98px) {
+		.page-item {
+			.page-link {
+				padding: 7px 14px;
+			}
+		}
+	}
+}

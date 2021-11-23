@@ -1,0 +1,147 @@
+.our-bussiness {
+	@include imageRatio(500, 500);
+	position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 70%;
+		bottom: 10%;
+		left: 0;
+		border: 1px solid $gray-150;
+		z-index: 1;
+	}
+	&::after {
+		content: "";
+		position: absolute;
+		top: 50px;
+		right: 0;
+		bottom: 0;
+		left: 20%;
+		background: $gray-50;
+		z-index: 1;
+	}
+	&__image-container {
+		position: relative;
+		z-index: 2;
+	}
+	&__info-container {
+		position: relative;
+		padding-left: 100px;
+		z-index: 2;
+	}
+
+	@media only screen and (max-width: 991.98px) {
+		&__info-container {
+			padding-left: 64px;
+		}
+	}
+
+	@media only screen and (max-width: 767.98px) {
+		&::before {
+			top: 0;
+			right: 50%;
+			bottom: 10%;
+			left: 0;
+		}
+		&::after {
+			top: 50px;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+		&__info-container {
+			padding-left: 0px;
+		}
+		&__image-container {
+			margin-bottom: 32px;
+		}
+	}
+}
+
+.bussiness-detail {
+	@include imageRatio(1366, 470);
+
+	&__header {
+		position: relative;
+		margin-top: -150px;
+		padding: 40px 70px;
+		background: $white;
+	}
+	&__image-container {
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: rgba(255, 255, 255, 0.589);
+			transition: 0.5s ease all;
+		}
+
+		&:hover::after {
+			top: 100%;
+			opacity: 0;
+		}
+	}
+	&__content-header {
+		p {
+			font-size: 16px;
+			color: $secondary;
+			margin-bottom: 24px;
+		}
+	}
+	&__subtitle {
+		font-size: 24px;
+		margin-bottom: 25px;
+		font-weight: 700;
+	}
+	&__cases {
+		padding-left: 100px;
+	}
+	&__content {
+		p {
+			color: $black;
+			font-size: 16px;
+		}
+		ul {
+			list-style: none;
+			padding: 0;
+			li {
+				position: relative;
+				padding-left: 30px;
+				margin-bottom: 16px;
+				&::before {
+					content: "";
+					position: absolute;
+					top: 4px;
+					left: 0;
+					width: 22px;
+					height: 22px;
+					background-image: url("../../images/check.svg");
+					background-repeat: no-repeat;
+				}
+			}
+		}
+	}
+
+	@media only screen and (max-width: 767.98px) {
+		&__header {
+			margin-top: 0px;
+			padding: 30px 42px;
+		}
+
+		&__cases {
+			margin-top: 32px;
+			padding-left: 0px;
+		}
+	}
+
+	@media only screen and (max-width: 575.98px) {
+		&__header {
+			margin-top: 0px;
+			padding: 0px;
+		}
+	}
+}

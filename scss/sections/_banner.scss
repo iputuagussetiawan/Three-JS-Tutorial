@@ -1,0 +1,110 @@
+.banner {
+	@include imageRatio(1198, 604);
+	position: relative;
+	background-color: $white;
+	.swiper-pagination {
+		text-align: left;
+		display: inline-block;
+	}
+	.swiper-pagination-bullet {
+		margin-bottom: 16px;
+		margin-right: 0;
+		background-color: $white;
+		display: block;
+	}
+
+	.swiper-pagination-bullet-active {
+		background: $white;
+	}
+	&__image {
+		position: absolute;
+		left: 0px;
+		width: 80%;
+		height: 100%;
+		min-height: 500px;
+		object-fit: cover;
+	}
+
+	&__box-container {
+		position: relative;
+		height: calc(100vh - 152px);
+		min-height: 500px;
+	}
+	&__swiper-pagination-box {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 3;
+	}
+
+	&__box-title {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 15px;
+		width: 50%;
+		padding: 50px 64px;
+		padding-right: 0;
+		background-color: $white;
+	}
+	&__title {
+		font-size: 35px;
+		font-weight: 700;
+		text-align: right;
+	}
+	@media only screen and (max-width: 1199.98px) {
+		&__box-container {
+			height: calc(100vh - 90px);
+		}
+		&__box-title {
+			padding: 42px 50px;
+			padding-right: 0px;
+		}
+		&__title {
+			font-size: 28px;
+		}
+	}
+	@media only screen and (max-width: 991.98px) {
+		&__box-container {
+			max-width: unset;
+		}
+		&__box-title {
+			padding-right: 50px;
+			width: 60%;
+			right: 0;
+		}
+		&__title {
+			font-size: 24px;
+		}
+		&__image {
+			width: 100%;
+		}
+	}
+	@media only screen and (max-width: 767.98px) {
+		.swiper-pagination-bullet {
+			display: inline-block;
+			margin-right: 16px;
+		}
+		&__swiper-pagination-box {
+			top: unset;
+			left: 50%;
+			transform: unset;
+			transform: translateX(-50%);
+			z-index: 3;
+			bottom: 0;
+			text-align: center;
+		}
+		&__box-title {
+			padding: 32px 32px;
+		}
+	}
+	@media only screen and (max-width: 575.98px) {
+		&__box-title {
+			padding: 24px 24px;
+		}
+		&__box-title {
+			width: 80%;
+		}
+	}
+}

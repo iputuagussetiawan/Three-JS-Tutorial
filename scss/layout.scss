@@ -1,0 +1,163 @@
+@import "_customs.scss";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/regular.scss";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "plugins/_swipper.scss";
+@import "plugins/_locomotivescroll.scss";
+@import "_config.scss";
+@import "base/_animations.scss";
+@import "base/_typography.scss";
+@import "base/_reset.scss";
+
+@import "layouts/_header.scss";
+@import "layouts/_main.scss";
+@import "layouts/_footer.scss";
+@import "layouts/_navbar.scss";
+@import "layouts/_section.scss";
+@import "layouts/_page-header.scss";
+@import "layouts/_forms.scss";
+@import "layouts/_pagination.scss";
+
+@import "components/_burgermenu.scss";
+@import "components/_scroll_to.scss";
+@import "components/_buttons.scss";
+@import "components/_loader.scss";
+@import "components/_social-icons.scss";
+@import "components/_search-overlay.scss";
+
+/*-----------------------------------------/
+///////////// DEFAULT SETUP ///////////////              
+-----------------------------------------*/
+.canvas-element {
+	position: fixed;
+	top: 180px;
+	left: -72px;
+	width: 500px;
+	height: 500px;
+	z-index: 1;
+}
+
+.grecaptcha-badge {
+	display: none !important;
+}
+.bg-gray-50 {
+	background-color: $gray-50;
+}
+
+.dropdown-language {
+	.dropdown-toggle {
+		&::after {
+			display: none;
+		}
+	}
+	.dropdown-menu {
+		min-width: 64px;
+	}
+	.nav-link {
+		padding: 8px 0px;
+	}
+}
+
+.swiper-container-inner {
+	position: relative;
+}
+
+.swiper-container {
+	width: 100%;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+	width: 50px;
+	height: 50px;
+	background: $white;
+	border-radius: 50%;
+	color: $black;
+	font-size: 18px;
+	transition: 0.4s ease;
+	transition: all 0.5s;
+	outline: none;
+	// &:hover {
+	// 	border: 1px solid $white;
+	// }
+	&:active {
+		transform: scale(0.9);
+	}
+	@media only screen and (max-width: 991.98px) {
+		width: 42px;
+		height: 42px;
+		font-size: 16px;
+	}
+}
+
+.swiper-button-next {
+	right: 0px;
+	@media only screen and (max-width: 575.98px) {
+		right: 15px;
+	}
+}
+
+.swiper-button-prev {
+	left: 0px;
+	@media only screen and (max-width: 575.98px) {
+		left: 15px;
+	}
+}
+
+.swiper-button-next:after,
+.swiper-container-rtl .swiper-button-prev:after {
+	display: none;
+}
+
+.swiper-button-prev:after,
+.swiper-container-rtl .swiper-button-next:after {
+	display: none;
+}
+.swiper-pagination {
+	position: relative;
+}
+
+.swiper-pagination-bullet {
+	margin-right: 16px;
+	width: 14px;
+	height: 14px;
+	border-radius: 100%;
+	background-color: $black;
+	transition: 0.4s ease;
+}
+
+.swiper-pagination-bullet-active {
+	background: $black;
+}
+
+.swiper-container-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+	bottom: 60px;
+}
+
+/*-----------------------------------------/
+///////////////////////// END DEFAULT SETUP        
+-----------------------------------------*/

@@ -1,0 +1,99 @@
+// |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾| //
+// | tmdrMIX v.1.0                           | //
+// | last update : 08 / 02 / 2021            | //
+// |_________________________________________| //
+
+@use "sass:math";
+
+// transform with fallback
+@mixin transform($declaration) {
+	-webkit-transform: #{$declaration};
+	-moz-transform: #{$declaration};
+	-ms-transform: #{$declaration};
+	-o-transform: #{$declaration};
+	transform: #{$declaration};
+}
+
+// transition with fallback
+@mixin transition($option) {
+	-webkit-transition: #{$option};
+	-moz-transition: #{$option};
+	-ms-transition: #{$option};
+	-o-transition: #{$option};
+	transition: #{$option};
+}
+
+// display flex with fallback
+@mixin displayFlex {
+	display: block;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+// make image ratio classes
+@mixin imageRatio(
+	$imageWidth: 0,
+	$imageHeight: 0,
+	$holder: false,
+	$className: "image"
+) {
+	&__#{$className}-container {
+		position: relative;
+		width: 100%;
+		@if ($holder) {
+			display: inline-block;
+			max-width: #{$imageWidth}px;
+		}
+		&:before {
+			content: "";
+			display: block;
+			padding-top: ($imageHeight / $imageWidth) * 100%;
+		}
+	}
+	&__#{$className} {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+// text elypsis mixin
+@mixin elypsis($font-size: 16, $lines-to-show: 1, $line-height: 1.4) {
+	display: block; /* Fallback for non-webkit */
+	display: -webkit-box;
+	height: #{$font-size * $line-height * $lines-to-show}px; /* Fallback for non-webkit */
+	font-size: #{$font-size}px;
+	line-height: $line-height;
+	-webkit-line-clamp: $lines-to-show;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+// GRADIENT MIXIN
+@mixin gradient {
+	background: linear-gradient(
+		to right,
+		rgba($primary, 0.95),
+		rgba($secondary, 0.95)
+	);
+}
+
+// ABSOLUTE CENTER
+@mixin absoluteCenter {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+// TRANSITION PROPERTY
+@mixin transitionProperty {
+	transition-duration: 1s;
+	transition-property: all;
+}

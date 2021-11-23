@@ -1,0 +1,26 @@
+.section-enquire {
+	position: relative;
+	background-color: $white;
+	min-height: 500px;
+	&__title {
+		position: relative;
+		margin-bottom: 32px;
+		font-weight: 600;
+		font-size: 36px;
+		line-height: 42px;
+		text-align: center;
+		letter-spacing: 0.8px;
+		text-transform: uppercase;
+		color: $black-400;
+		z-index: 2;
+	}
+}
+
+.section-enquire-decoration {
+	@include imageRatio(350, 552, true);
+	&__image-container {
+		position: absolute;
+		top: -100px;
+		left: 0;
+	}
+}

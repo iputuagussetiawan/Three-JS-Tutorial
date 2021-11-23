@@ -1,0 +1,46 @@
+.bussiness-list {
+	@include imageRatio(50, 50, true);
+	list-style: none;
+	padding: 0;
+	margin-bottom: 20px;
+	&__item {
+		display: flex;
+	}
+	&__image-container {
+		max-height: 50px;
+	}
+	&__info-container {
+		padding-left: 20px;
+	}
+	&__title {
+		font-size: 24px;
+		color: $black;
+		font-weight: 700;
+	}
+	&__info {
+		font-size: 16px;
+		color: $black;
+		margin-bottom: 0px;
+	}
+
+	@media only screen and (max-width: 1199.98px) {
+		&__title {
+			font-size: 22px;
+		}
+	}
+	@media only screen and (max-width: 767.98px) {
+		&__image-container {
+			max-width: 37px;
+			max-height: 37px;
+		}
+		&__title {
+			font-size: 20px;
+		}
+	}
+
+	@media only screen and (max-width: 575.98px) {
+		&__info {
+			font-size: 14px;
+		}
+	}
+}

@@ -1,0 +1,20 @@
+.footer-social-icon {
+	display: inline-block;
+	list-style: none;
+	padding: 0;
+	&__item {
+		display: inline-block;
+		margin-right: 24px;
+		&:last-child {
+			margin-right: 0px;
+		}
+	}
+	&__link {
+		font-size: 19px;
+		text-decoration: none;
+		color: $primary;
+		&:hover {
+			color: $secondary;
+		}
+	}
+}

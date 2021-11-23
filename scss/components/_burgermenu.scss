@@ -1,0 +1,98 @@
+@use "sass:math";
+$background-color: #191a1e;
+
+//Burger Variables - COPY
+$burger-width: 45px;
+$burger-height: 40px;
+$burger-thickness: 3px;
+$burger-color: $black-400;
+$burger-activated-color: $black-400;
+
+.burger-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	background-color: $white;
+
+	.item {
+		width: calc(33% - 30px);
+		padding: 15px;
+	}
+}
+
+.burger {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: space-between;
+	width: $burger-width;
+	height: $burger-height;
+	padding: 10px;
+	cursor: pointer;
+	overflow: hidden;
+
+	span {
+		width: 100%;
+		height: $burger-thickness;
+		background-color: $burger-color;
+		transition: all 0.25s;
+	}
+
+	&.activated {
+		span {
+			background-color: $burger-activated-color;
+		}
+	}
+
+	////////////////////////////////////////////////////////////////////////////
+	// BURGER ONE
+	////////////////////////////////////////////////////////////////////////////
+	&.one {
+		&.activated {
+			span {
+				&:nth-child(1) {
+					transform: translateY(10px) rotate(45deg);
+				}
+				&:nth-child(2) {
+					transform: translateX(100px);
+				}
+				&:nth-child(3) {
+					transform: translateY(-7px) rotate(-45deg);
+				}
+			}
+		}
+	}
+
+	////////////////////////////////////////////////////////////////////////////
+	// BURGER TEN
+	////////////////////////////////////////////////////////////////////////////
+	&.ten {
+		justify-content: space-around;
+
+		&.activated {
+			// justify-content: space-between;
+			span {
+				&:nth-child(1) {
+					transform: translateY((5px)) rotate(45deg);
+				}
+				&:nth-child(2) {
+					transform: translateY((-2.5px)) rotate(-45deg);
+				}
+			}
+			&:hover {
+				span {
+					&:nth-child(1) {
+						width: 100%;
+					}
+				}
+			}
+		}
+		&:hover {
+			span {
+				&:nth-child(1) {
+					width: 80%;
+				}
+			}
+		}
+	}
+}

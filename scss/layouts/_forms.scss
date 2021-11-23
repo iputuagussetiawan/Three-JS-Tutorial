@@ -1,0 +1,24 @@
+/*-----------------------------------------
+//////////////// FORM SETUP ///////////////
+-----------------------------------------*/
+.form-control-costum {
+	margin: 8px 0;
+	width: 100%;
+	padding: 12px 24px;
+	box-sizing: border-box;
+	font-size: 14px;
+	transition: 0.4s ease;
+}
+
+.form-control-costum:focus {
+	border: 1px solid $primary;
+	box-shadow: none;
+	outline: none;
+}
+
+.required {
+	color: red;
+}
+/*-----------------------------------------
+//////////////////////////////// FORM SETUP
+-----------------------------------------*/

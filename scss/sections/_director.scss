@@ -1,0 +1,164 @@
+.section-director {
+	@include imageRatio(400, 532, true);
+	position: relative;
+	overflow: hidden;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+	}
+	&__image-wrapper {
+		position: relative;
+		z-index: 1;
+		&::before {
+			content: "";
+			position: absolute;
+		}
+	}
+	&__image-container {
+		position: relative;
+		z-index: 1;
+		display: block;
+	}
+	&__info-container {
+		padding-left: 100px;
+	}
+	&__name,
+	&__name-latin,
+	&__career-label {
+		font-size: 24px;
+		color: $black;
+		text-transform: uppercase;
+		font-weight: 700;
+	}
+	&__name-latin,
+	&__career-label {
+		margin-bottom: 4px;
+	}
+
+	&__position {
+		margin-bottom: 24px;
+		color: $secondary;
+		font-size: 20px;
+		text-transform: uppercase;
+	}
+
+	&__career-list {
+		padding-left: 19px;
+	}
+	&__career-item {
+		font-size: 16px;
+	}
+	&--left {
+		@extend .section-director;
+		&::before {
+			left: 0px;
+			right: 70%;
+			bottom: 30%;
+			border: 1px solid $gray-200;
+		}
+	}
+	&--left &__image-wrapper {
+		&::before {
+			content: "";
+			position: absolute;
+			top: 40%;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: $gray-100;
+			z-index: -1;
+		}
+	}
+
+	&--right {
+		@extend .section-director;
+		&::before {
+			left: 70%;
+			right: 0px;
+			bottom: 30%;
+			border: 1px solid $gray-200;
+		}
+	}
+	&--right &__image-wrapper {
+		text-align: right;
+		&::before {
+			content: "";
+			position: absolute;
+			top: 40%;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: $gray-100;
+			z-index: -1;
+		}
+	}
+	&--right &__info-container {
+		padding-left: 0px;
+		padding-right: 100px;
+	}
+
+	&--right &__image-container {
+		margin-left: auto;
+	}
+
+	@media only screen and (max-width: 1199.98px) {
+		&__name,
+		&__name-latin,
+		&__career-label {
+			font-size: 22px;
+		}
+		&__position {
+			margin-bottom: 22px;
+			font-size: 18px;
+		}
+	}
+
+	@media only screen and (max-width: 991.98px) {
+		&__name,
+		&__name-latin,
+		&__career-label {
+			font-size: 20px;
+		}
+	}
+
+	@media only screen and (max-width: 767.98px) {
+		&__name,
+		&__name-latin,
+		&__career-label {
+			font-size: 18px;
+		}
+		&__position {
+			margin-bottom: 20px;
+			font-size: 17px;
+		}
+		&__image-container {
+			margin: 0 auto;
+			margin-bottom: 24px;
+		}
+		&__info-container {
+			padding-left: 0px;
+		}
+
+		&--left {
+			&::before {
+				top: 50%;
+				right: 60%;
+				bottom: 0px;
+				left: 0px;
+			}
+		}
+		&--right {
+			&::before {
+				top: 50%;
+				right: 0px;
+				bottom: 0px;
+				left: 60%;
+			}
+		}
+		&--right &__info-container {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+	}
+}

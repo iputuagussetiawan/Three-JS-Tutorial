@@ -1,0 +1,107 @@
+.timeline {
+	@include imageRatio(230, 280, true);
+	position: relative;
+	margin: 15px 0;
+	padding: 30px 0px;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 50%;
+		width: 2px;
+		background-color: $gray-300;
+		transition: 0.4s ease;
+	}
+	&:hover::before {
+		background-color: $black;
+	}
+	&__left {
+		text-align: right;
+		padding-right: 60px;
+	}
+	&__right {
+		text-align: left;
+		padding-left: 60px;
+	}
+	&__image-container {
+		margin-bottom: 41px;
+	}
+	&__year {
+		font-size: 24px;
+		color: $black;
+		font-weight: 700;
+	}
+	&__content {
+		p {
+			font-size: 16px;
+			color: $black;
+		}
+	}
+
+	@media only screen and (max-width: 1199.98px) {
+		padding: 24px 0px;
+		&__left {
+			padding-right: 50px;
+		}
+		&__right {
+			padding-left: 50px;
+		}
+	}
+
+	@media only screen and (max-width: 991.98px) {
+		&::before {
+			width: 1px;
+		}
+		&__left {
+			padding-right: 42px;
+		}
+		&__right {
+			padding-left: 42px;
+		}
+		&__image-container {
+			margin-bottom: 32px;
+		}
+	}
+
+	@media only screen and (max-width: 767.98px) {
+		@include imageRatio(184, 224, true);
+		margin: 0;
+		padding-top: 0;
+		&:last-child {
+			padding-bottom: 0;
+		}
+		&::before {
+			display: none;
+		}
+
+		&__left {
+			text-align: left;
+			padding-right: 0px;
+		}
+		&__right {
+			text-align: left;
+			padding-left: 0px;
+		}
+		&__year {
+			margin-bottom: 16px;
+		}
+		&__image-container {
+			margin-bottom: 16px;
+		}
+	}
+
+	@media only screen and (max-width: 575.98px) {
+		&__year {
+			font-size: 20px;
+		}
+		&__content {
+			p {
+				font-size: 14px;
+			}
+		}
+		&__image-container {
+			margin-bottom: 8px;
+		}
+	}
+}

@@ -1,0 +1,348 @@
+@use "../config" as *;
+
+.card-bussiness {
+	@include imageRatio(370, 398);
+	display: inline-block;
+	position: relative;
+	text-align: left;
+	border-radius: 0;
+	border: 0;
+	width: 100%;
+	overflow: hidden;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 100%;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(252, 252, 252, 0.9);
+		z-index: 1;
+		transition: 0.4s ease;
+	}
+	&:hover::before {
+		top: 0;
+	}
+
+	&:hover &__image {
+		transform: scale(1.2) rotate(2deg);
+	}
+	&:hover &__title {
+		top: 0;
+		background-color: transparent;
+	}
+	&:hover &__description-container {
+		top: 50%;
+		opacity: 1;
+	}
+
+	&__image {
+		transition: 0.4s ease;
+	}
+
+	&__title {
+		position: absolute;
+		top: calc(100% - 100px);
+		max-height: 100px;
+		overflow-y: auto;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		padding: 35px 25px;
+		margin: 0;
+		background-color: rgba(252, 252, 252, 0.9);
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 24px;
+		font-weight: 700;
+		transition: 0.4s ease all;
+		z-index: 2;
+	}
+
+	&__description-container {
+		position: absolute;
+		top: 70%;
+		transform: translateY(-40%);
+		right: 0px;
+		left: 0px;
+		padding: 35px 25px;
+		width: 100%;
+		opacity: 0;
+		transition: 0.3s ease all;
+		z-index: 2;
+	}
+
+	&__description {
+		@include elypsis(16, 6, 1.5);
+		text-align: center;
+	}
+
+	@media only screen and (max-width: 1199.98px) {
+		&__title {
+			font-size: 22px;
+		}
+	}
+
+	@media only screen and (max-width: 767.98px) {
+		&__title {
+			font-size: 18px;
+		}
+	}
+}
+
+.card-testimonial {
+	@include imageRatio(48, 48, true);
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	padding: 35px 30px;
+	background-color: $white;
+	border: 1px solid $gray-200;
+	transition: 0.4s ease;
+
+	&:hover {
+		border: 1px solid $black;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 30px;
+		left: 30px;
+		width: 72px;
+		height: 72px;
+		background: url("../../images/quote-sign.svg");
+		transform: rotate(180deg);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	&__message-container {
+		display: block;
+		margin-bottom: 24px;
+	}
+
+	&__client-container {
+		display: flex;
+	}
+	&__client-wrapper {
+		padding-left: 22px;
+	}
+
+	&__image {
+		border-radius: 100%;
+	}
+	&__client-name {
+		margin-bottom: 4px;
+		font-size: 16px;
+		font-weight: 700;
+	}
+
+	&__client-company {
+		margin-bottom: 0px;
+	}
+	@media only screen and (max-width: 767.98px) {
+		&::before {
+			top: 37px;
+			left: 30px;
+			width: 30px;
+			height: 30px;
+		}
+	}
+}
+.card-testimonial-slider {
+	@include imageRatio(125, 125, true);
+	display: flex;
+	padding: 42px 0px;
+	text-align: left;
+	&__image-container {
+		flex: 0 0 125px;
+		max-height: 125px;
+	}
+	&__image {
+		height: auto;
+	}
+	&__body {
+		position: relative;
+		padding-left: 50px;
+		&::before {
+			content: "";
+			position: absolute;
+			top: -18px;
+			background-image: url(../../images/quote-sign.svg);
+			background-repeat: no-repeat;
+			background-size: contain;
+			z-index: -1;
+			width: 72px;
+			height: 72px;
+			transform: rotate(180deg);
+		}
+	}
+	&__mesaage {
+		margin-bottom: 19px;
+		font-size: 20px;
+		line-height: 1.5;
+		color: $secondary;
+	}
+	&__name {
+		margin-bottom: 11px;
+		font-size: 24px;
+		color: $black;
+		text-transform: capitalize;
+		line-height: 1;
+	}
+	&__company {
+		font-size: 20px;
+		font-style: italic;
+		color: $gray-700;
+		line-height: 1;
+	}
+	@media only screen and (max-width: 1199.98px) {
+		&__mesaage {
+			margin-bottom: 16px;
+			font-size: 18px;
+		}
+		&__name {
+			font-size: 22px;
+		}
+		&__company {
+			font-size: 18px;
+		}
+	}
+	@media only screen and (max-width: 991.98px) {
+		padding: 0px 0px;
+		&__body {
+			padding-left: 42px;
+
+			&::before {
+				top: 7px;
+
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				z-index: -1;
+				width: 45px;
+				height: 36px;
+				transform: rotate(180deg);
+			}
+		}
+	}
+	@media only screen and (max-width: 767.98px) {
+		flex-direction: column;
+		align-items: center;
+		&__body {
+			text-align: center;
+			padding-left: 0px;
+			&::before {
+				left: 0;
+			}
+		}
+		&__image-container {
+			margin-bottom: 24px;
+			flex: 0 0 125px;
+			max-height: 125px;
+		}
+	}
+}
+
+.card-news {
+	@include imageRatio(370, 409);
+	@include imageRatio(570, 300, false, "image-wide");
+	display: inline-block;
+	position: relative;
+	text-align: left;
+	color: #f6f6f6;
+	width: 100%;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: linear-gradient(
+			180deg,
+			rgba(0, 0, 0, 0) 0%,
+			rgba(0, 0, 0, 0.9) 100%
+		);
+		z-index: 1;
+	}
+	&:hover &__image,
+	&:hover &__image-wide {
+		transform: scale(1.2) rotate(2deg);
+	}
+	&__body {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		padding: 15px;
+		color: $white;
+		transition: 0.4s ease;
+		z-index: 2;
+	}
+
+	&__image-container,
+	&__image-wide-container {
+		overflow: hidden;
+	}
+
+	&__image,
+	&__image-wide {
+		transition: 0.4s ease;
+	}
+
+	&__title {
+		font-weight: 700;
+		font-size: 20px;
+
+		text-transform: uppercase;
+		line-height: 1.5;
+	}
+
+	&__date {
+		font-size: 16px;
+		font-style: italic;
+		line-height: 1.5px;
+		margin-bottom: 13px;
+	}
+}
+
+.card-client {
+	@include imageRatio(228, 90);
+	transition: 0.4s ease;
+	// &:hover {
+	// 	box-shadow: 0px -1px 8px -6px rgba(0, 0, 0, 0.25);
+	// 	-webkit-box-shadow: 0px -1px 12px -6px rgba(0, 0, 0, 0.25);
+	// 	-moz-box-shadow: 0px -1px 8px -6px rgba(0, 0, 0, 0.25);
+	// }
+	&:hover &__image {
+		filter: grayscale(0);
+	}
+	&__image-container {
+		background-color: $white;
+	}
+	&__image {
+		object-fit: contain;
+		padding: 8px;
+		filter: grayscale(1);
+		transition: 0.4s ease;
+	}
+}
+
+.card-contact {
+	position: relative;
+	margin-bottom: 32px;
+	padding: 35px 30px;
+	border: 1px solid #dadce0;
+
+	h2 {
+		margin-bottom: 15px;
+		font-size: 24px;
+		font-weight: 700;
+	}
+
+	@media only screen and (max-width: 767.98px) {
+		padding: 24px 18px;
+	}
+}

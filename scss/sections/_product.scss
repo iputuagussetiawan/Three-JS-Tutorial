@@ -1,0 +1,16 @@
+.section-product {
+	position: relative;
+	overflow: hidden;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 70%;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: #fff;
+	}
+	&__pagination-wrapper {
+		margin-top: 64px;
+	}
+}

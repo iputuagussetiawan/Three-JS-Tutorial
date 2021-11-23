@@ -7,6 +7,9 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GUI } from 'three/examples/jsm/libs/dat.gui.module.js';
 import Stats from 'three/examples/jsm/libs/stats.module.js';
 import LocomotiveScroll from 'locomotive-scroll';
+import { Tooltip, Toast, Popover } from "bootstrap";
+
+import '../scss/layout.scss';
 
 const scroll = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
@@ -23,25 +26,23 @@ let renderer;
 let objectModel;
 let model_container = document.querySelector('.webgl');
 const canvasSize = document.querySelector('.canvas-element');
-
 const stats = new Stats()
 document.body.appendChild(stats.domElement);
-
-
 
 const init = () => {
     // scene setup
     scene = new THREE.Scene();
     scene.add(new THREE.AxesHelper(5))
-
     //camera setup
-    const fov = 40;
-    const aspect = canvasSize.offsetWidth / canvasSize.offsetHeight;
+    const fov = 75;
+    const widthObject= canvasSize.offsetWidth;
+    const heightObject=canvasSize.offsetHeight
+    const aspect = widthObject / heightObject;
     const near = 0.01;
     const far = 100;
 
     camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.z=10;
+    camera.position.z=15;
     camera.rotation.z=1;
     //camera.lookAt(scene.position);
     scene.add(camera);
@@ -53,7 +54,7 @@ const init = () => {
         canvas: model_container
     });
     
-    renderer.setSize(canvasSize.offsetWidth, canvasSize.offsetHeight);
+    renderer.setSize(widthObject,  heightObject);
     // renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
     // renderer.autoClear = false;
     renderer.setClearColor(0x000000, 0.0);
@@ -180,9 +181,9 @@ const animate = () => {
 }
 // making responsive
 const windowResize = () => {
-    camera.aspect = canvasSize.offsetWidth / canvasSize.offsetHeight;
+    camera.aspect = widthObject / heightObject;
     camera.updateProjectionMatrix();
-    renderer.setSize(canvasSize.offsetWidth, canvasSize.offsetHeight);
+    renderer.setSize(widthObject, heightObject);
     render();
 }
 

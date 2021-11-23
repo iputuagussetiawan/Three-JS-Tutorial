@@ -1,0 +1,13 @@
+@use '../config' as *;
+.gallery-image {
+	position: relative;
+	&--odd {
+		@extend .gallery-image;
+		@include imageRatio(507, 440, true);
+	}
+
+	&--even {
+		@extend .gallery-image;
+		@include imageRatio(510, 590, true);
+	}
+}

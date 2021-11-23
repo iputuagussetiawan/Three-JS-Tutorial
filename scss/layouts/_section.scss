@@ -1,0 +1,105 @@
+@use "../config/variable" as *;
+/*-----------------------------------------
+//////////// SECTION PADDING //////////////
+-----------------------------------------*/
+.section-padding {
+	padding-top: 100px;
+	padding-bottom: 100px;
+
+	&--bottom {
+		@extend .section-padding;
+		padding-top: 0px;
+		padding-bottom: 100px;
+	}
+
+	&--top {
+		@extend .section-padding;
+		padding-top: 100px;
+		padding-bottom: 0px;
+	}
+
+	@media only screen and (max-width: 991.98px) {
+		padding-top: 72px;
+		padding-bottom: 72px;
+
+		&--top {
+			padding-top: 72px;
+			padding-bottom: 0px;
+		}
+		&--bottom {
+			padding-top: 0px;
+			padding-bottom: 72px;
+		}
+	}
+	@media only screen and (max-width: 767.98px) {
+		padding-top: 64px;
+		padding-bottom: 64px;
+
+		&--top {
+			padding-top: 64px;
+			padding-bottom: 0px;
+		}
+		&--bottom {
+			padding-top: 0px;
+			padding-bottom: 64px;
+		}
+	}
+
+	@media only screen and (max-width: 575.98px) {
+		padding-top: 32px;
+		padding-bottom: 32px;
+
+		&--top {
+			padding-top: 32px;
+			padding-bottom: 0px;
+		}
+		&--bottom {
+			padding-top: 0px;
+			padding-bottom: 32px;
+		}
+	}
+}
+/*-----------------------------------------
+/////////////////////// SECTION PADDING END
+-----------------------------------------*/
+
+/*-----------------------------------------
+////////////// SECTION TITLE //////////////
+-----------------------------------------*/
+.section-title {
+	margin-bottom: 42px;
+	font-weight: 700;
+	font-size: 45px;
+	line-height: 50px;
+	letter-spacing: 0.8px;
+	text-transform: uppercase;
+	color: $black;
+	z-index: 5;
+
+	@media only screen and (max-width: 1199.98px) {
+		font-size: 37px;
+	}
+
+	@media only screen and (max-width: 991.98px) {
+		font-size: 32px;
+		margin-bottom: 32px;
+	}
+	@media only screen and (max-width: 767.98px) {
+		font-size: 28px;
+	}
+
+	@media only screen and (max-width: 575.98px) {
+		font-size: 24px;
+		margin-bottom: 24px;
+	}
+}
+
+.section-subtitle {
+	font-size: 24px;
+	text-transform: uppercase;
+	color: $black;
+	font-weight: 700;
+}
+/*-----------------------------------------
+///////////////////////// SECTION TITLE END
+-----------------------------------------*/

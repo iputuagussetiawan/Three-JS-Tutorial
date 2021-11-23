@@ -1,0 +1,14 @@
+.section-productcategories {
+	position: relative;
+	overflow: hidden;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 33.33%;
+		bottom: 0;
+		left: 33.33%;
+		background-color: $gray-100;
+	}
+	background-color: $white;
+}

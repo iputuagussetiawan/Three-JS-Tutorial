@@ -1,0 +1,74 @@
+.our-team {
+	@include imageRatio(300, 355, true, "image-one");
+	@include imageRatio(340, 400, true, "image-two");
+
+	.section-title {
+		margin-bottom: 10px;
+	}
+
+	&__images-wrapper {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		padding-top: 100px;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 10%;
+			right: 25%;
+			bottom: 10%;
+			left: 25%;
+			background: $gray-100;
+		}
+	}
+
+	&__image-two-container {
+		top: -100px;
+	}
+	&__qty {
+		font-size: 45px;
+		color: $secondary;
+		text-transform: uppercase;
+		font-weight: 700;
+	}
+
+	@media only screen and (max-width: 1199.98px) {
+		&__qty {
+			font-size: 37px;
+		}
+		@include imageRatio(235, 278, true, "image-one");
+		@include imageRatio(235, 278, true, "image-two");
+	}
+
+	@media only screen and (max-width: 991.98px) {
+		&__qty {
+			font-size: 32px;
+		}
+
+		@include imageRatio(272, 321, true, "image-one");
+		@include imageRatio(272, 321, true, "image-two");
+	}
+
+	@media only screen and (max-width: 767.98px) {
+		&__qty {
+			font-size: 28px;
+			margin-bottom: 24px;
+		}
+		&__images-wrapper {
+			padding-top: 0px;
+			&::before {
+				top: 10%;
+				right: 10%;
+				bottom: 10%;
+				left: 10%;
+			}
+		}
+
+		&__image-two-container {
+			top: 0px;
+			margin-top: 16px;
+		}
+	}
+}

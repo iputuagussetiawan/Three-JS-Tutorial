@@ -1,0 +1,24 @@
+@import "../_config.scss";
+@import "../components/cards";
+
+.single-post {
+	@include imageRatio(1170, 617);
+
+	&__date {
+		font-size: 16px;
+		font-style: italic;
+		font-weight: 700;
+		margin-bottom: 13px;
+	}
+	&__title {
+		margin-bottom: 60px;
+		font-size: 45px;
+		font-weight: 700;
+		color: $black;
+		text-transform: uppercase;
+	}
+
+	&__image-container {
+		margin-bottom: 60px;
+	}
+}

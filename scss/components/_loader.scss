@@ -1,0 +1,56 @@
+.loader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1200;
+	background-color: white;
+	opacity: 0.99;
+	backdrop-filter: blur(5px);
+
+	&__circle-container,
+	&__icon-container {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 50%;
+		text-align: center;
+		z-index: 999;
+
+		@include transform(translateY(-50%));
+	}
+
+	&__icon {
+		width: 150px;
+		animation-name: beat;
+		animation-iteration-count: infinite;
+		animation-duration: 0.7s;
+		animation-delay: 0s;
+		animation-timing-function: ease-in-out;
+		animation-direction: alternate;
+	}
+
+	&__circle {
+		animation-name: rotation;
+		animation-iteration-count: infinite;
+		animation-duration: 4s;
+		animation-delay: 0s;
+		animation-timing-function: linear;
+	}
+}
+
+@keyframes rotation {
+	50% {
+		@include transform(rotate(180deg));
+	}
+	100% {
+		@include transform(rotate(360deg));
+	}
+}
+
+@keyframes beat {
+	to {
+		@include transform(scale(1.2));
+	}
+}

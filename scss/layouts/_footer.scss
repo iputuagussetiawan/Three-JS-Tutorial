@@ -1,0 +1,61 @@
+@use "../config/variable" as *;
+/*-----------------------------------------
+////////////////// FOOTER /////////////////
+-----------------------------------------*/
+.footer {
+	position: relative;
+	background-image: linear-gradient(
+			rgba(255, 255, 255, 0.9),
+			rgba(255, 255, 255, 0.5)
+		),
+		url("/images/marble-bg.jpg");
+
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	&__menu-title {
+		margin-bottom: 24px;
+		font-size: 16px;
+		color: $secondary;
+		text-transform: uppercase;
+		font-weight: 700;
+	}
+	&__company-address {
+		margin-bottom: 21px;
+		font-size: 16px;
+		font-weight: 600;
+	}
+	@media only screen and (max-width: 991.98px) {
+		&__logo {
+			max-width: 164px;
+		}
+	}
+	@media only screen and (max-width: 767.98px) {
+		text-align: center;
+	}
+}
+.footer-widget {
+	margin-bottom: 32px;
+}
+.footer-menu {
+	padding: 0px;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	max-height: 200px;
+	&__item {
+		padding-bottom: 25px;
+	}
+	&__link {
+		font-size: 16px;
+		font-weight: 600;
+		text-decoration: none;
+		text-transform: uppercase;
+		transition: 0.4s ease;
+		color: $primary;
+		&:hover {
+			color: $secondary;
+		}
+	}
+}

@@ -1,0 +1,141 @@
+// @import "../customs";
+@import "../config";
+.top-menu {
+	display: flex;
+	margin-top: 0px;
+	width: 100%;
+	border-bottom: 1px solid #ddd;
+	transition: 0.4s ease;
+
+	&.hide {
+		margin-top: -46px;
+	}
+
+	// @media only screen and (max-width: 991.98px) {
+	// 	display: none;
+	// }
+
+	@media only screen and (max-width: 991.98px) {
+		margin-right: 8px;
+		border-bottom: none;
+		&.hide {
+			margin-top: 0px;
+		}
+	}
+}
+.menu-top-menu-container {
+	margin-left: auto;
+	position: relative;
+	.menu {
+		// display: flex;
+		list-style: none;
+	}
+}
+#menu-top-menu > li {
+	position: relative;
+	&::before {
+		font-family: "Font Awesome 5 Free";
+		font-weight: 900;
+		content: "\f078";
+		position: absolute;
+		top: 1px;
+		right: 0;
+		// transform: translateY(-50%);
+		// width: 10px;
+		// height: 10px;
+		transition: transform 0.4s ease-in-out;
+		//transform-origin: center bottom;
+	}
+}
+#menu-top-menu {
+	position: relative;
+	margin: 0px;
+	padding: 8px 0px;
+
+	& > li {
+		padding-right: 20px;
+	}
+
+	a {
+		position: relative;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 700;
+	}
+
+	.current-menu-parent:hover .sub-menu {
+		opacity: 1;
+		transform: translateY(0px);
+		pointer-events: auto;
+	}
+	.current-menu-parent:hover::before {
+		-webkit-transform: rotate(180deg);
+	}
+
+	.sub-menu {
+		position: absolute;
+		padding: 0;
+		list-style: none;
+		background: $white;
+		width: 72px;
+		right: 0;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+		box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.03);
+		z-index: 10;
+		transform: translateY(-10px);
+
+		& li {
+			padding: 4px 8px;
+			transition: 0.4s ease;
+		}
+
+		& li:hover {
+			background-color: $gray-100;
+		}
+	}
+}
+.navbar {
+	position: relative;
+	z-index: 100;
+}
+.navbar-custom {
+	padding: 0px;
+	transition: all 0.3s ease;
+	background-color: $white;
+	z-index: 100;
+}
+
+.navbar-mobile {
+	display: flex;
+	.navbar-toggler {
+		padding: 0;
+		border: none;
+	}
+}
+
+.navbar-brand {
+	//@include imageRatio(74, 70, true);
+	margin-right: 24px;
+	padding: 0px;
+	background-color: $white;
+
+	&.small img {
+		max-width: 110px;
+	}
+
+	&__image,
+	img {
+		max-width: 150px;
+		height: auto;
+		transition: 0.4s ease;
+	}
+
+	@media only screen and (max-width: 991.98px) {
+		&__image,
+		img {
+			max-width: 90px;
+		}
+	}
+}

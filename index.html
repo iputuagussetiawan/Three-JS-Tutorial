@@ -5,22 +5,139 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>three js</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="dist/app.css">
 </head>
 
 <body data-scroll-container>
-    <div class="flex-container" data-scroll-section>
-        <div class="main-content">
-            <h1 class="anim1" data-scroll data-scroll-speed="1">We build your <span class="accent">dream</span></h1>
-            <p data-scroll data-scroll-speed="1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis adipisci quas voluptas voluptates
-                quae debitis doloremque quisquam atque reiciendis soluta necessitatibus nam incidunt nostrum est, rem
-                labore aliquam placeat maiores.</p>
-            <a data-scroll data-scroll-speed="1" href="#">Let's build</a>
-        </div>
-        <div class="canvas-element">
-            <canvas class="webgl"></canvas>
-        </div>
-    </div>
+	<div id="wrapper" class="wrapper">
+		<header data-scroll-section>
+			<div class="top-header py-3">
+				<div class="container">
+					<h1>Logo</h1>
+				</div>
+			</div>
+		</header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" data-scroll-section data-scroll-sticky data-scroll-target="body">
+			<div class="container">
+			  <a class="navbar-brand" href="#">Navbar</a>
+			  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				  <li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="#">Home</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="#">Link</a>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					  Dropdown
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <li><a class="dropdown-item" href="#">Action</a></li>
+					  <li><a class="dropdown-item" href="#">Another action</a></li>
+					  <li><hr class="dropdown-divider"></li>
+					  <li><a class="dropdown-item" href="#">Something else here</a></li>
+					</ul>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+				  </li>
+				</ul>
+				<form class="d-flex">
+				  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+				  <button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			  </div>
+			</div>
+		</nav>
+		<main>
+			<div class="canvas-element">
+				<canvas class="webgl"></canvas>
+			</div>
+			<div class="container section-padding" data-scroll-section>
+				<div class="main-content">
+					<h1 class="anim1" data-scroll data-scroll-speed="1">We build your <span class="accent">dream</span></h1>
+					<p data-scroll data-scroll-speed="1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis adipisci quas voluptas voluptates
+						quae debitis doloremque quisquam atque reiciendis soluta necessitatibus nam incidunt nostrum est, rem
+						labore aliquam placeat maiores.</p>
+					<a data-scroll data-scroll-speed="1" href="#">Let's build</a>
+				</div>
+				
+			</div>
+			<div class="section section-padding" data-scroll-section>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="card">
+								<img src="assets/images/drone/drone-01.jpg" class="card-img-top" alt="drone">
+								<div class="card-body">
+								  <h5 class="card-title">Card title</h5>
+								  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								  <a href="#" class="btn btn-primary">Go somewhere</a>
+								</div>
+							  </div>
+						</div>
+						<div class="col-md-4">
+							<div class="card">
+								<img src="assets/images/drone/drone-02.png" class="card-img-top" alt="...">
+								<div class="card-body">
+								  <h5 class="card-title">Card title</h5>
+								  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								  <a href="#" class="btn btn-primary">Go somewhere</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card">
+								<img src="assets/images/drone/drone-03.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+								  <h5 class="card-title">Card title</h5>
+								  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								  <a href="#" class="btn btn-primary">Go somewhere</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card">
+								<img src="assets/images/drone/drone-01.jpg" class="card-img-top" alt="drone">
+								<div class="card-body">
+								  <h5 class="card-title">Card title</h5>
+								  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								  <a href="#" class="btn btn-primary">Go somewhere</a>
+								</div>
+							  </div>
+						</div>
+						<div class="col-md-4">
+							<div class="card">
+								<img src="assets/images/drone/drone-02.png" class="card-img-top" alt="...">
+								<div class="card-body">
+								  <h5 class="card-title">Card title</h5>
+								  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								  <a href="#" class="btn btn-primary">Go somewhere</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card">
+								<img src="assets/images/drone/drone-03.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+								  <h5 class="card-title">Card title</h5>
+								  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								  <a href="#" class="btn btn-primary">Go somewhere</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</main>
+	</div>
+  
     <script type="module" src="dist/app.js"></script>
 </body>
 

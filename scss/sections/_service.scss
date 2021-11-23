@@ -1,0 +1,45 @@
+.section-service {
+	position: relative;
+	margin-top: 100px;
+	background-color: $white;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 33.33%;
+		height: 33.33%;
+		background: $gray-100;
+	}
+
+	&__lists {
+		position: relative;
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			right: 25%;
+			bottom: 0;
+			left: 0;
+			background-color: $white;
+		}
+	}
+	&__title-container {
+		display: inline-block;
+		width: 70%;
+		background: #fff;
+		padding-top: 24px;
+		padding: 32px;
+		padding-bottom: 0;
+	}
+}
+
+.section-service-decoration {
+	@include imageRatio(350, 606, true);
+	&__image-container {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		z-index: 1;
+	}
+}
